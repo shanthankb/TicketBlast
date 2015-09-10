@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		179522A91C189EDB005022E4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179522A81C189EDB005022E4 /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
+		2E4D2737B3633A537671127D /* libPods-GoldenBeryl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E7C57DC705A2F623AADC7F /* libPods-GoldenBeryl.a */; };
 		926AA5A018507F3600E3284A /* Icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 926AA59818507F3600E3284A /* Icon-1024.png */; };
 		926AA5A118507F3600E3284A /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 926AA59918507F3600E3284A /* Icon-114.png */; };
 		926AA5A218507F3600E3284A /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 926AA59A18507F3600E3284A /* Icon-120.png */; };
@@ -260,6 +262,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		179522A81C189EDB005022E4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		4FF06085753B494690091E36 /* Pods-GoldenBeryl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenBeryl.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenBeryl/Pods-GoldenBeryl.release.xcconfig"; sourceTree = "<group>"; };
+		7BD17401F9A1AADBC0BB3028 /* Pods-GoldenBeryl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoldenBeryl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoldenBeryl/Pods-GoldenBeryl.debug.xcconfig"; sourceTree = "<group>"; };
 		926AA59818507F3600E3284A /* Icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-1024.png"; sourceTree = "<group>"; };
 		926AA59918507F3600E3284A /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114.png"; sourceTree = "<group>"; };
 		926AA59A18507F3600E3284A /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
@@ -334,6 +339,7 @@
 		92CA6A2E1848A4AC00111720 /* bottom_bar_photoEdit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_bar_photoEdit@2x.png"; sourceTree = "<group>"; };
 		92CA6A2F1848A4AC00111720 /* navbar_photoEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_photoEdit.png; sourceTree = "<group>"; };
 		92CA6A301848A4AC00111720 /* navbar_photoEdit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_photoEdit@2x.png"; sourceTree = "<group>"; };
+		D9E7C57DC705A2F623AADC7F /* libPods-GoldenBeryl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoldenBeryl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E70C60A7175DEA420099B2FB /* NSObject+OVConvenienceMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+OVConvenienceMethods.h"; sourceTree = "<group>"; };
 		E70C60A8175DEA430099B2FB /* NSObject+OVConvenienceMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+OVConvenienceMethods.m"; sourceTree = "<group>"; };
 		E715ADA7173A26110052595C /* button_photoEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_photoEdit.png; sourceTree = "<group>"; };
@@ -564,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7EFAF6C174809D90026A442 /* Social.framework in Frameworks */,
+				179522A91C189EDB005022E4 /* Crashlytics.framework in Frameworks */,
 				E7EFAF6A174809CE0026A442 /* libsqlite3.dylib in Frameworks */,
 				E7EFAF68174809BA0026A442 /* Accounts.framework in Frameworks */,
 				E7EFAF66174809B20026A442 /* AdSupport.framework in Frameworks */,
@@ -577,12 +584,30 @@
 				E7655AD6170D615E00CBA4E5 /* Foundation.framework in Frameworks */,
 				E7655AD8170D615E00CBA4E5 /* CoreGraphics.framework in Frameworks */,
 				E7EFAF62174806760026A442 /* FacebookSDK.framework in Frameworks */,
+				2E4D2737B3633A537671127D /* libPods-GoldenBeryl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		179522A41C189BF1005022E4 /* ThirdPartyFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				179522A81C189EDB005022E4 /* Crashlytics.framework */,
+			);
+			path = ThirdPartyFrameworks;
+			sourceTree = "<group>";
+		};
+		507EE38A207F8AE2B2A98E9C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BD17401F9A1AADBC0BB3028 /* Pods-GoldenBeryl.debug.xcconfig */,
+				4FF06085753B494690091E36 /* Pods-GoldenBeryl.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		926AA59718507F3600E3284A /* AppIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -977,6 +1002,7 @@
 				E7655AD9170D615E00CBA4E5 /* GoldenBeryl */,
 				E7655AD2170D615E00CBA4E5 /* Frameworks */,
 				E7655AD0170D615E00CBA4E5 /* Products */,
+				507EE38A207F8AE2B2A98E9C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -991,6 +1017,7 @@
 		E7655AD2170D615E00CBA4E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				179522A41C189BF1005022E4 /* ThirdPartyFrameworks */,
 				E7EFAF6B174809D90026A442 /* Social.framework */,
 				E7EFAF69174809CE0026A442 /* libsqlite3.dylib */,
 				E7EFAF67174809BA0026A442 /* Accounts.framework */,
@@ -1006,6 +1033,7 @@
 				E7655AD3170D615E00CBA4E5 /* UIKit.framework */,
 				E7655AD5170D615E00CBA4E5 /* Foundation.framework */,
 				E7655AD7170D615E00CBA4E5 /* CoreGraphics.framework */,
+				D9E7C57DC705A2F623AADC7F /* libPods-GoldenBeryl.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1309,9 +1337,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7655AED170D615E00CBA4E5 /* Build configuration list for PBXNativeTarget "GoldenBeryl" */;
 			buildPhases = (
+				43FA121A0349653E41C80591 /* Check Pods Manifest.lock */,
 				E7655ACB170D615E00CBA4E5 /* Sources */,
 				E7655ACC170D615E00CBA4E5 /* Frameworks */,
 				E7655ACD170D615E00CBA4E5 /* Resources */,
+				179522A71C189EA4005022E4 /* ShellScript */,
+				B2431240839217FA129E7472 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1333,7 +1364,7 @@
 				ORGANIZATIONNAME = "Abhiman Puranik";
 				TargetAttributes = {
 					E7655ACE170D615E00CBA4E5 = {
-						DevelopmentTeam = 9586C2WL69;
+						DevelopmentTeam = 5EY73M5E42;
 					};
 				};
 			};
@@ -1557,6 +1588,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		179522A71C189EA4005022E4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Pods/Fabric/Fabric.framework/run 135973d313d0c751ce75401f3a8146b5927bbcd4 84aff7f89f290f8f9826f9b35805f50fdf451616c7eb9a23afb2c0b460dc9b34\n";
+		};
+		43FA121A0349653E41C80591 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B2431240839217FA129E7472 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoldenBeryl/Pods-GoldenBeryl-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E7655ACB170D615E00CBA4E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1678,33 +1755,41 @@
 		};
 		E7655AEE170D615E00CBA4E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BD17401F9A1AADBC0BB3028 /* Pods-GoldenBeryl.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Developer MyScout (LV98DC35L4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Developer MyScout (LV98DC35L4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ThirdPartyFrameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoldenBeryl/GoldenBeryl-Prefix.pch";
 				INFOPLIST_FILE = "GoldenBeryl/GoldenBeryl-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myScout;
 				PRODUCT_NAME = TicketBlast;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		E7655AEF170D615E00CBA4E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FF06085753B494690091E36 /* Pods-GoldenBeryl.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Developer MyScout (LV98DC35L4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Developer MyScout (LV98DC35L4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ThirdPartyFrameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoldenBeryl/GoldenBeryl-Prefix.pch";
@@ -1712,6 +1797,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myScout;
 				PRODUCT_NAME = TicketBlast;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

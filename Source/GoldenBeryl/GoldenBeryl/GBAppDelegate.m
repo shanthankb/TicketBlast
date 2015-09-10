@@ -9,6 +9,8 @@
 #import "GBAppDelegate.h"
 #import "GBCustomNavigationController.h"
 #import "GBCoverFlowViewController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation GBAppDelegate
 
@@ -52,11 +54,16 @@
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
 	
-	
+    [self setupCrashlytics];
 	
     return YES;
 }
 
+-(void)setupCrashlytics
+{
+    [Fabric with:@[[Crashlytics class]]];
+
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
