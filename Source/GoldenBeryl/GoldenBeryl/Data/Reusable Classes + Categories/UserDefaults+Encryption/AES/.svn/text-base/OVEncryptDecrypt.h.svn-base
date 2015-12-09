@@ -1,0 +1,21 @@
+//
+//  OVEncryptDecrypt.h
+//  CitrineEx
+//
+//  Created by Sourcebits Inc
+//  Copyright 2012 Research Habits LLC. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+
+@interface OVEncryptDecrypt : NSObject {
+
+}
+
+- (NSMutableData*) decryptFile:(NSString*) path;
+- (NSString*) encryptPassWord: (NSString*) aPassWord;
+- (BOOL) encryptData:(NSData*) data withPathToWrite:(NSString*) path errorMsg:(NSString**)error;
+
+
+@end

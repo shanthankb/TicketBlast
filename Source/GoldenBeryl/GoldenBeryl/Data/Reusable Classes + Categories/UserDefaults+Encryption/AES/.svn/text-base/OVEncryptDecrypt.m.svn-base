@@ -1,0 +1,149 @@
+//
+//  OVEncryptDecrypt.m
+//  CitrineEx
+//
+//  Created by Sourcebits Inc
+//  Copyright 2012 Research Habits LLC. All rights reserved.
+//
+
+#import "OVEncryptDecrypt.h"
+
+#include "rijndael.h"
+
+#define KEYBITS		256
+#define PASS_KEY	@"kn0ck1ngl1vev1d30passw0rdstr1ng"
+
+@implementation OVEncryptDecrypt
+
+- (NSString*) encryptPassWord: (NSString*) aPassWord {
+	
+	int i;
+	const char *password = [aPassWord UTF8String];
+	
+	NSString*  outString = [[NSString alloc] init];
+	
+	for(i=0; '\0' != password[i] ; i++)
+	{
+		char c =  password[i]*-1;
+		outString =[outString stringByAppendingFormat:@"%c",c];
+	}	
+	
+    return outString;
+}
+
+- (BOOL) encryptData:(NSData*) data withPathToWrite:(NSString*) path errorMsg:(NSString**)error {
+	
+	int i;
+	unsigned char ciphertext[16];
+	unsigned long rk[RKLENGTH(KEYBITS)];
+	unsigned char plaintextToEncrypt[16];
+	unsigned char key[KEYLENGTH(KEYBITS)];
+	
+	int		        range = 16;
+	int   remainingLength = 0;
+	
+	BOOL		   sucess = YES;
+	
+	NSString *passWordKey = [self encryptPassWord:PASS_KEY];
+	
+	const char*  password = [passWordKey UTF8String];
+	
+    for (i = 0; i < sizeof(key); i++)
+		key[i] = password != 0 ? *password++ : 0;
+	
+	int nrounds = rijndaelSetupEncrypt(rk, key, KEYBITS);
+	
+	FILE*    fp = fopen([path UTF8String], "w");
+	
+	NSString *plistDataForEncoding = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+	
+	int			  lenthOfplistData = [plistDataForEncoding length];
+	
+	for(i=0;i<lenthOfplistData;i=i+16)
+	{
+		remainingLength = lenthOfplistData - i;
+		
+		if(remainingLength<range)
+			range = remainingLength;
+		
+		NSString*		  str = [plistDataForEncoding substringWithRange:NSMakeRange(i, range)];
+	
+		const char* plaintext = [str cStringUsingEncoding:NSASCIIStringEncoding];
+		
+		memcpy (plaintextToEncrypt,plaintext,strlen(plaintext));
+		
+		int textLength = strlen(plaintext);
+		
+		int j;
+		
+		for(j = textLength;j<16;j++)
+			plaintextToEncrypt[j] = ' ';
+		
+		rijndaelEncrypt(rk, nrounds, plaintextToEncrypt, ciphertext);
+		
+		if (fwrite(ciphertext, sizeof(ciphertext), 1, fp) != 1)
+		{
+			fclose(fp);
+			sucess = NO;
+		}
+	}
+	
+	fclose(fp);
+	
+	return sucess;
+}
+
+- (NSMutableData*) decryptFile:(NSString*) path {
+	
+	int i;
+	unsigned char plaintext[16];
+	unsigned char ciphertext[16];
+	unsigned long rk[RKLENGTH(KEYBITS)];
+	unsigned char key[KEYLENGTH(KEYBITS)];
+
+	NSMutableData* dataToWrite = nil;
+	
+	NSMutableDictionary *plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+	
+	if(plistDict)
+	{
+		//NSLog(@"Valid Dictionary");
+		
+		dataToWrite = [[NSMutableData alloc]initWithContentsOfFile:path];
+	}
+	else
+	{
+		////NSLog(@"Encrypted Dictionary ");
+		
+		NSString*	   passWordKey = [self encryptPassWord:PASS_KEY];
+		
+		const char*		  password = [passWordKey UTF8String];
+		
+		for (i = 0; i < sizeof(key); i++)
+			key[i] = password != 0 ? *password++ : 0;
+		
+		FILE*    fp = fopen([path UTF8String], "r");
+		int nrounds = rijndaelSetupDecrypt(rk, key, KEYBITS); 
+		
+		while (1)
+		{
+			if (fread(ciphertext, sizeof(ciphertext), 1, fp) != 1)
+				break;
+		
+			rijndaelDecrypt(rk, nrounds, ciphertext, plaintext);
+			
+			if(!dataToWrite) 
+				dataToWrite = [[NSMutableData alloc]initWithBytes:plaintext length:16];
+			else
+				[dataToWrite appendBytes:plaintext length:16];  
+			
+		}
+		fclose(fp);
+	}
+	
+	[plistDict release];
+	
+	return dataToWrite;
+}
+
+@end
