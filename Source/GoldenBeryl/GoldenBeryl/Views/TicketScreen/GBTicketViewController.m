@@ -1081,18 +1081,40 @@
         }
             
         case ReachableViaWWAN:
-        {
-			UIActionSheet *shareActionSheet = [[UIActionSheet alloc]initWithTitle:@"Share Via" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook",@"Twitter", nil];
-            [shareActionSheet showInView:_scrollView];
-            break;
-        }
         case ReachableViaWiFi:
         {
-			UIActionSheet *shareActionSheet = [[UIActionSheet alloc]initWithTitle:@"Share Via" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook",@"Twitter", nil];
-            [shareActionSheet showInView:_scrollView];
+            [self showShareOptions];
+        }
             break;
-		}
+
     }
+}
+
+-(void)showShareOptions
+{
+    NSString *text = permanentText;
+  
+    UIImage *image = self.doc.photo;
+    
+    UIActivityViewController *controller =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:@[text, image]
+     applicationActivities:nil];
+    
+    controller.excludedActivityTypes = @[UIActivityTypePostToWeibo,
+                                         UIActivityTypeMessage,
+                                         UIActivityTypeMail,
+                                         UIActivityTypePrint,
+                                         UIActivityTypeCopyToPasteboard,
+                                         UIActivityTypeAssignToContact,
+                                         UIActivityTypeSaveToCameraRoll,
+                                         UIActivityTypeAddToReadingList,
+                                         UIActivityTypePostToFlickr,
+                                         UIActivityTypePostToVimeo,
+                                         UIActivityTypePostToTencentWeibo,
+                                         UIActivityTypeAirDrop];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma mark Dealloc
